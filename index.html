@@ -4,62 +4,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body, html {
-
   background-color: #0061c2;
-  background-image: url('./static/back.png');
-  background-size: 100vw 100vh;
-  margin: 0;
+  
+  /* background-image: url('./static/back.png'); */
+  background-size: 100%;
 
+  margin:0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.scrolltainer{
+  display: flex;
+  flex-direction: column;
+  /* The image used */
+  background-color: #0061c2;
+  /* Full height */
+  height: 100vh;
+overflow-y: hidden;
+justify-content: space-between;
+  
 }
 header{
-  background-color:white;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 100vw;
+position: fixed;
+  background-color: white; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, white ,#0061c2,#0061c2 ,#0061c2 ,#0061c2 , white);
+
 display: flex;
 flex-direction: row;
-height: 120px;
+justify-content:space-between;
+
+
 }
 
-.title{color:  #0061c2; 
- font-size: 4vw;
- vertical-align: middle;
+title{color:  whitesmoke; 
+ font-size: 48px;
  text-align: center;
  margin: auto;
+ display: block;
  }
 
 .info{
 
    color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
     text-align: center;
     vertical-align: middle; 
-    margin: auto;
-    padding-top: 200px;
-   
+    margin: auto;   
 }
 img{height: 100px;padding: 10px;}
-.git{
+.small_icon{
   width: 32px;
   height: 32px;
-  background:white;
+  background:transparent;
   vertical-align: middle;
   margin-top: auto;
   text-align: center;
+}
+#soi{
+  width: auto;
+}
+.main_cover{
+  padding-top: 20vh;
+
+}
+.downarrow{
+padding: 100px;
+display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.arrow {
+  box-sizing: border-box;
+  height: 5vw;
+  width: 5vw;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 2px 2px 0px;
+  transform: rotate(45deg);
+  transition: border-width 150ms ease-in-out;
+}
+
+.arrow:hover {
+  border-bottom-width: 6px;
+  border-right-width: 6px;
+}
+.open{
+  list-style: none;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+li{
+font-size: 24px;
+height: 50px;
+border: 1px dashed white;
+padding:50px;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <a href="https://schmidtocean.org/" target="_blank"><img src = "./static/SOI_mark.png"/ alt="schmidt ocean institute logo"></a>
- <div class = "title">Schmidt Ocean Institute Open Source</div>
- <a href="https://github.com/orgs/schmidtocean/repositories"><img class="git" src = "./static/GitHub-Mark-32px.png"/ alt="github repository"></a>
-</header>
+  <!-- <a href="https://schmidtocean.org/" target="_blank"><img src = "./static/SOI_mark.png"/ alt="schmidt ocean institute logo"></a> -->
+ <!-- <div class = "title">Schmidt Ocean Institute Open Source</div> -->
+ <a href="https://schmidtocean.org/" target="_blank"><img  class ="small_icon" id="soi" src = "./static/SOI_mark.png" alt="schmidt ocean institute logo"></a>
 
-<div class = "info">
-Schmidt Ocean Institute's home for open source.  Code repositories coming soon. 
+ <a href="https://github.com/orgs/schmidtocean/repositories"><img class="small_icon"  src = "./static/GitHub-Mark-32px.png" alt="github repository"></a>
+</header>
+<div class="scrolltainer">
+  <div class="main_cover">
+  <title>Schmidt Ocean Institute</title>
+  <div class = "info">
+    Open Source 
+    </div>
+  </div>
+  
+  <div class ="downarrow">
+  
+    <button onclink = "Jump()" class="arrow"></button>
+
+  </div>
+</div >
+  <div id="next" class="scrolltainer">
+    <div class="main_cover">
+      <ul class = "open">
+        <li>
+          Open Data
+        </li>
+        <li>
+          Open Code
+        </li>
+        <li>
+          Open Ocean
+        </li>
+      </ul>
+      </div>
+
 </div>
 
+
+
+
 <footer></footer>
+<script>
+  function Jump(){
+    document.querySelector('#next').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
 </body>
 </html>
